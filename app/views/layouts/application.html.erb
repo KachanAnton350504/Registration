@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RegistrationApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <%= link_to('RegistrationApp', root_path, class: "navbar-brand")  %> 
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+      </li>
+    <% else %>
+      <li>
+      <%= link_to('Log in', new_user_session_path)  %>  
+      </li>
+      <li>
+      <%= link_to('Sign up', new_user_registration_path)  %>  
+      </li>
+
+      
+    <% end %>
+    </ul>
+    </div>
+  </div>
+</div>
+
+
+<body>
+  <div class='text-center'><%= bootstrap_flash %></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <%= yield %>
+    </div>
+  </div>
+  <div class="navbar-fixed-bottom row-fluid">
+    <div class="container">
+      <p class="text-muted">&copy; Itransition, Anton Kachan</p>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
+
+
+
